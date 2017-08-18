@@ -11,8 +11,6 @@ $(document).ready(function(){
 
 	var index = 0;
 	var match = 0;
-	var incorrect = 0;
-
 	var countdownTimer = {
 		time : 10,
 		reset: function() {
@@ -31,7 +29,6 @@ $(document).ready(function(){
 				$('#timer').html('<h3>' + countdownTimer.time + ' seconds remaining</h3>');
 			} else {
 				index++;
-				incorrect++;
 				countdownTimer.reset();
 				if (index < content.length) {
 					loadQ(index);
@@ -77,6 +74,15 @@ $(document).ready(function(){
 	////////////////////////////////
 	// functions
 
+	// starts a new game
+	function init(){
+		index = 0;
+		match = 0;
+		$("#game").show();
+		countdownTimer.start();
+		loadQ(index);
+	}
+
 	//loads the html buttons with content
 	function loadQ(i) {
 		countdownTimer.reset();
@@ -92,9 +98,8 @@ $(document).ready(function(){
 		countdownTimer.stop();
 		$("#game").hide();
 		$("#final").show();
-		$("#score").html("<div> You scored " + y + " out of 4 correct </div>");
+		$("#score").html("<div> You scored " + y + " out of" + content.length + "correct </div>");
 		$("#score").show();
-		$("#restart").show();
 	}
 
 	//end functions
@@ -106,12 +111,11 @@ $(document).ready(function(){
 
 	$("#start").on("click", function() {
 		$("#title").hide();
-		countdownTimer.start();
-		$("#game").show();
-		loadQ(index);
+		init();
 	});
 
 	$('.optionButton').on('click', function() {
+		console.log(content[index].a[aI]);
 
 		//sets the user input to an index number so we can compare to answer
 		var UI;
@@ -126,9 +130,12 @@ $(document).ready(function(){
 		}
 
 		//checks answer
-		console.log(content.aI);
-		if (UI === content[index].aI) {
+		if (UI == content[index].aI) {
 			match++
+			countdownTimer.stop();
+			$("#game").hide();
+			$("#solution").html("<div> Correct! the answer was " + content[index].a[aI]) + "</div>";
+			$("#solution").show();
 		}
 
 		//starts next Question
@@ -141,13 +148,8 @@ $(document).ready(function(){
 	});// option button event listener 
 
 	$("#reset").on("click", function() {
-		index = 0;
-		match = 0;
 		$("#final").hide();
-		$("#restart").hide();
-		countdownTimer.start();
-		$("#game").show();
-		loadQ(index);
+		init();
 	});
 
 	//end event listeners
