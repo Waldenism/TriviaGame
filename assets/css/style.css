@@ -1,0 +1,29 @@
+body {
+	background-image: url('../images/doodles.png');
+}
+#content {
+	background-color: yellow;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width:67%;
+	/*height: 1000px;*/
+	margin:0 auto;
+
+}
+
+header {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/*#screen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:67%;
+	height: 1000px;
+	margin:0 auto;
+}*/
