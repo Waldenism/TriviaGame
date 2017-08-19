@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 	//array of objects with question, answer and answer index properties
 	var content = [
-		/*{
+		{
 			q: "Who was the first president under Articles of Confederation in 1781?",
 			a: ["George Washington", " John Hanson", " Jefferson Davis", " Thomas Jefferson"],
 			aI: 1
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			q: "How many members are there in the US congress?",
 			a: ["100", "535", "435", "Depends on Year"],
 			aI: 1
-		},*/
+		},
 		{
 			q: "In addition to Courage and Wisdom, What is the final piece of the Triforce?",
 			a: ["Power", "Link", "The Force", "Serenity"],
