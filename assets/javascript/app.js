@@ -45,7 +45,7 @@ $(document).ready(function(){
 	var content = [
 		{
 			q: "Who was the first president under Articles of Confederation in 1781?",
-			a: ["George Washington", " John Hanson", " Jefferson Davis", " Thomas Jefferson"],
+			a: ["George Washington", " John Hanson", " Jefferson Davis", " John Adams"],
 			aI: 1
 		},
 		{
