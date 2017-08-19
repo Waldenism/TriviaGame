@@ -13,9 +13,9 @@ $(document).ready(function(){
 	var index = 0;
 	var match = 0;
 	var countdownTimer = {
-		time : 10,
+		time : 15,
 		reset: function() {
-			this.time = 10;
+			this.time = 15;
 			$('#timer').html('<h3> <span id="timeNum"> ' + this.time + '</span> seconds remaining </h3>');
 		},
 		start: function() {
@@ -45,6 +45,11 @@ $(document).ready(function(){
 	//array of objects with question, answer and answer index properties
 	var content = [
 		{
+			q: "Who was the first president under Articles of Confederation in 1781?",
+			a: ["George Washington", " John Hanson", " Jefferson Davis", " John Adams"],
+			aI: 1
+		},
+		{
 			q: "How many meters are in a mile?",
 			a: ["1500", "1760", "1609", "5280"],
 			aI: 2
@@ -53,11 +58,6 @@ $(document).ready(function(){
 			q: "Which one does not belong?",
 			a: ["Squirtle", "Charmander", "Bulbasaur", "Lexar"],
 			aI: 3
-		},
-		{
-			q: "Who was the first president under Articles of Confederation in 1781?",
-			a: ["George Washington", " John Hanson", " Jefferson Davis", " John Adams"],
-			aI: 1
 		},
 		{
 			q: 'Who sings the song "I Kissed a Girl"?',
