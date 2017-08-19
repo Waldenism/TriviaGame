@@ -31,16 +31,12 @@ $(document).ready(function(){
 			} else {
 				wrong();
 				index++;
-				countdownTimer.reset();
 				if (index < content.length) {
 					loadQ(index);
 				} else {
-
 					X = setTimeout(function() {
-						countdownTimer.start();
 						endSequence(match);
 					}, 2000);
-
 				}
 			}
 		} /*count*/
@@ -189,9 +185,7 @@ $(document).ready(function(){
 		//checks answer
 		if (UI === content[index].aI) {
 			right();
-		} else {
-			wrong();
-		}
+		} else { wrong();}
 
 		//starts next Question
 		index++;
@@ -199,7 +193,6 @@ $(document).ready(function(){
 			loadQ(index);	
 		} else {
 			X = setTimeout(function() {
-				countdownTimer.start();
 				endSequence(match);
 			}, 2000);
 		}

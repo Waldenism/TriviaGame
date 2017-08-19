@@ -5,19 +5,13 @@ body {
 }
 #content {
 	background-color: lightyellow;
-	/*display: flex;*/
-	/*flex-direction: column;*/
-	/*justify-content: center;*/
-	/*align-items: center;*/
 	border:ridge pink 4px;
 	width: 85%;
-	height: 550px;
-	/*height:90%;*/
+	height: 500px;
 	margin:0 auto;
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
-
 header {
 	font-family: 'Kavoon', cursive;
 	width: 100%;
@@ -29,22 +23,18 @@ header {
 	padding-top: 10px;
 	border-bottom:ridge pink 3px;
 }
-
 button {
-	margin: 20px 0 20px 20px;
+	margin: 10px 0 20px 10px;
 	background-color: orange;
-	border: none;
 	font-size: 1.0em;
 	padding: 10px;
 	border-radius: 20px;
 	width:200px;
 	border:ridge pink 3px;
 }
-
 button:hover {
 	cursor: pointer;
 }
-
 #question {
 	margin-left: 20px;
 	margin-right: 20px;
@@ -55,12 +45,10 @@ button:hover {
 #timer {
 	margin-left: 20px;
 }
-
 #timeNum {
 	font-size: 1.8em;
 	letter-spacing: .1em;
 }
-
 h2, #score, #solution {
 	margin-left: 20px;
 	margin-right: 20px;
