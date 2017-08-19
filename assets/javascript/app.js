@@ -5,17 +5,18 @@ $(document).ready(function(){
 
 	$("#game").hide();
 	$("#final").hide();
+	$("#solution").hide();
 
 	////////////////////////////////////////
 	//variables
-
+	var X;
 	var index = 0;
 	var match = 0;
 	var countdownTimer = {
 		time : 10,
 		reset: function() {
 			this.time = 10;
-			$('#timer').html('<h3>' + this.time + ' seconds remaining</h3>');
+			$('#timer').html('<h3> <span id="timeNum"> ' + this.time + '</span> seconds remaining </h3>');
 		},
 		start: function() {
 			counter = setInterval(countdownTimer.count, 1000);	
@@ -25,9 +26,10 @@ $(document).ready(function(){
 		},
 		count: function() {
 			countdownTimer.time--;
-			if (countdownTimer.time >= 0) {
-				$('#timer').html('<h3>' + countdownTimer.time + ' seconds remaining</h3>');
+			if (countdownTimer.time > 0) {
+				$('#timer').html('<h3><span id="timeNum">' + countdownTimer.time + '</span> seconds remaining</h3>');
 			} else {
+				wrong();
 				index++;
 				countdownTimer.reset();
 				if (index < content.length) {
@@ -41,7 +43,7 @@ $(document).ready(function(){
 
 	//array of objects with question, answer and answer index properties
 	var content = [
-		{
+		/*{
 			q: "Who was the first president under Articles of Confederation in 1781?",
 			a: ["George Washington", " John Hanson", " Jefferson Davis", " Thomas Jefferson"],
 			aI: 1
@@ -53,19 +55,44 @@ $(document).ready(function(){
 		},
 		{
 			q: "When was the Constitution ratified?",
-			a: ["1787", "1776", "1781", "1777", "1789"],
+			a: ["1787", "1776", "1781", "1789"],
 			aI: 0
 		},
 		{
 			q: "How many strings does a typical pedal or concert Harp have?",
 			a: ["38", "50", "40", "47"],
 			aI: 3
+		},
+		{
+			q: 'Who sings the song "I Kissed a Girl"?',
+			a: ["Carly Rae Jepsen", "Miley Cyrus", "Ke$ha", "Katy Perry"],
+			aI: 3
+		},
+		{
+			q: "How many members are there in the US congress?",
+			a: ["100", "535", "435", "Depends on Year"],
+			aI: 1
+		},*/
+		{
+			q: "In addition to Courage and Wisdom, What is the final piece of the Triforce?",
+			a: ["Power", "Link", "The Force", "Serenity"],
+			aI: 0
+		},
+		{
+			q: "How many meters are in a mile?",
+			a: ["1500", "1760", "1609", "5280"],
+			aI: 2
+		},
+		{
+			q: "A Rubiks cube has 26 visable pieces, how many border only two sides?",
+			a: ["12", "8", "26", "6"],
+			aI: 0
+		},
+		{
+			q: "Which one does not belong?",
+			a: ["Squirtle", "Charmander", "Bulbasaur", "Lexar"],
+			aI: 3
 		}
-		/*{
-		q: "",
-		a: ["", "", "", ""],
-		aI:
-		}*/
 	]; //end content
 
 	//end variables
@@ -93,12 +120,39 @@ $(document).ready(function(){
 		$("#buttonD").html("<div>" + content[i].a[3] + "</div>");	
 	}
 
-	//passes in match and incorrect
-	function endSequence(y) {
+	function wrong(){
 		countdownTimer.stop();
 		$("#game").hide();
+		$("#solution").html("<div> Wrong! The answer was " + content[index].a[content[index].aI] + ".</div>");
+		$("#solution").show();
+		X = setTimeout(function() {
+			countdownTimer.start();
+			$("#game").show();
+			$("#solution").hide();
+		}, 2000);
+	}
+
+	function right() {
+		match++
+		countdownTimer.stop();
+		$("#game").hide();
+		$("#solution").html("<div> Correct! The answer was " + content[index].a[content[index].aI] + ".</div>");
+		$("#solution").show();
+		X = setTimeout(function() {
+			countdownTimer.start();
+			$("#game").show();
+			$("#solution").hide();
+		}, 2000);
+	}
+
+	//passes in match and incorrect
+	function endSequence(y) {
+		clearTimeout(X);
+		countdownTimer.stop();
+		$("#game").hide();
+		$("#solution").hide();
 		$("#final").show();
-		$("#score").html("<div> You scored " + y + " out of" + content.length + "correct </div>");
+		$("#score").html("<div> You scored " + y + " out of " + content.length + " correct. </div>");
 		$("#score").show();
 	}
 
@@ -108,14 +162,12 @@ $(document).ready(function(){
 	/////////////////////////////////////////////////////////
 	//event listeners
 
-
 	$("#start").on("click", function() {
 		$("#title").hide();
 		init();
 	});
 
 	$('.optionButton').on('click', function() {
-		console.log(content[index].a[aI]);
 
 		//sets the user input to an index number so we can compare to answer
 		var UI;
@@ -130,12 +182,10 @@ $(document).ready(function(){
 		}
 
 		//checks answer
-		if (UI == content[index].aI) {
-			match++
-			countdownTimer.stop();
-			$("#game").hide();
-			$("#solution").html("<div> Correct! the answer was " + content[index].a[aI]) + "</div>";
-			$("#solution").show();
+		if (UI === content[index].aI) {
+			right();
+		} else {
+			wrong();
 		}
 
 		//starts next Question
