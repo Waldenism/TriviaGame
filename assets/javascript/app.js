@@ -35,7 +35,12 @@ $(document).ready(function(){
 				if (index < content.length) {
 					loadQ(index);
 				} else {
-					endSequence(match);
+
+					X = setTimeout(function() {
+						countdownTimer.start();
+						endSequence(match);
+					}, 2000);
+
 				}
 			}
 		} /*count*/
@@ -44,8 +49,28 @@ $(document).ready(function(){
 	//array of objects with question, answer and answer index properties
 	var content = [
 		{
+			q: "How many meters are in a mile?",
+			a: ["1500", "1760", "1609", "5280"],
+			aI: 2
+		},
+		{
+			q: "Which one does not belong?",
+			a: ["Squirtle", "Charmander", "Bulbasaur", "Lexar"],
+			aI: 3
+		},
+		{
 			q: "Who was the first president under Articles of Confederation in 1781?",
 			a: ["George Washington", " John Hanson", " Jefferson Davis", " John Adams"],
+			aI: 1
+		},
+		{
+			q: 'Who sings the song "I Kissed a Girl"?',
+			a: ["Carly Rae Jepsen", "Miley Cyrus", "Ke$ha", "Katy Perry"],
+			aI: 3
+		},
+		{
+			q: "How many members are there in the US congress?",
+			a: ["100", "535", "435", "Depends on Year"],
 			aI: 1
 		},
 		{
@@ -64,34 +89,14 @@ $(document).ready(function(){
 			aI: 3
 		},
 		{
-			q: 'Who sings the song "I Kissed a Girl"?',
-			a: ["Carly Rae Jepsen", "Miley Cyrus", "Ke$ha", "Katy Perry"],
-			aI: 3
-		},
-		{
-			q: "How many members are there in the US congress?",
-			a: ["100", "535", "435", "Depends on Year"],
-			aI: 1
-		},
-		{
 			q: "In addition to Courage and Wisdom, What is the final piece of the Triforce?",
 			a: ["Power", "Link", "The Force", "Serenity"],
 			aI: 0
 		},
 		{
-			q: "How many meters are in a mile?",
-			a: ["1500", "1760", "1609", "5280"],
-			aI: 2
-		},
-		{
 			q: "A Rubiks cube has 26 visable pieces, how many border only two sides?",
 			a: ["12", "8", "26", "6"],
 			aI: 0
-		},
-		{
-			q: "Which one does not belong?",
-			a: ["Squirtle", "Charmander", "Bulbasaur", "Lexar"],
-			aI: 3
 		}
 	]; //end content
 
@@ -193,7 +198,10 @@ $(document).ready(function(){
 		if (index < content.length) {
 			loadQ(index);	
 		} else {
-			endSequence(match);
+			X = setTimeout(function() {
+				countdownTimer.start();
+				endSequence(match);
+			}, 2000);
 		}
 	});// option button event listener 
 
