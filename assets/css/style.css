@@ -1,5 +1,6 @@
 body {
 	/*box-sizing: border-box;*/
+	height:100%;
 	background-image: url('../images/doodles.png');
 }
 #content {
@@ -10,9 +11,11 @@ body {
 	/*align-items: center;*/
 	border:ridge pink 4px;
 	width: 80%;
-	height: 650px;
+	height: 550px;
+	/*height:90%;*/
 	margin:0 auto;
 	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 header {
