@@ -43,6 +43,14 @@ button:hover {
 	border-top:dotted pink 2px;
 	padding-top: 10px;
 }
+#title p {
+	margin-left: 30px;
+	margin-right: 20px;
+	padding-bottom: 10px;
+	font-size: 1.2em;
+	border-bottom:dotted pink 2px;
+	padding-top: 10px;
+}
 #timer {
 	margin-left: 30px;
 	padding-bottom: 5px;
